@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("TerpTweets");
+        //setTitle("TerpTweets");
         // Twitter Accounts
         accountsToShow = new ArrayList<>();
         TwitterAccount presidentLoh = new TwitterAccount("President Loh", 299743215, "presidentLoh");
@@ -93,11 +93,13 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
     }
 
-
     private void setupDrawerContent(NavigationView navigationView) {
+        Menu navMenu = navigationView.getMenu();
+        for (TwitterAccount t: accountsToShow){
+            navMenu.add(t.getAccountName());
+        }
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -128,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setCurrentItem(index);
 
         // Highlight the selected item has been done by NavigationView
-        menuItem.setChecked(true);
+        //menuItem.setChecked(true);
 
         // Close the navigation drawer
         mDrawer.closeDrawers();
