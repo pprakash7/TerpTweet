@@ -17,9 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
@@ -109,27 +107,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void selectDrawerItem(MenuItem menuItem) {
         // Create a new fragment and specify the fragment to show based on nav item clicked
-        switch(menuItem.getItemId()) {
-            case R.id.nav_first_fragment:
-                mViewPager.setCurrentItem(0);
-                CheckBox c_box =(CheckBox) menuItem.getActionView();
-                if(c_box.isChecked()){
-                Toast.makeText(getApplicationContext(), "Loh checked",
-                   Toast.LENGTH_SHORT).show(); }
-                break;
-            case R.id.nav_second_fragment:
-                mViewPager.setCurrentItem(1);
-                break;
-            case R.id.nav_third_fragment:
-                mViewPager.setCurrentItem(2);
-                break;
-            default:
-                mViewPager.setCurrentItem(0);
+
+        mViewPager.setCurrentItem(menuItem.getItemId());
+        int index = -1;
+
+        String title = menuItem.getTitle().toString();
+        for (TwitterAccount t: accountsToShow) {
+            if (t.getAccountName().equalsIgnoreCase(title)) {
+                index = accountsToShow.indexOf(t);
+            }
         }
+
+        if (index == -1){
+            index = 0;
+        }
+
+        mViewPager.setCurrentItem(index);
+
         // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);
-        // Set action bar title
-//        setTitle(menuItem.getTitle());
+
         // Close the navigation drawer
         mDrawer.closeDrawers();
     }
