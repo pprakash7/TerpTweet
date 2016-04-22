@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
@@ -61,8 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("TerpTweets");
         // Twitter Accounts
-        accountsToShow = new ArrayList<TwitterAccount>();
+        accountsToShow = new ArrayList<>();
         TwitterAccount presidentLoh = new TwitterAccount("President Loh", 299743215, "presidentLoh");
         TwitterAccount uOfMd = new TwitterAccount("UMD",36003748 , "UofMaryland");
         TwitterAccount diamondback = new TwitterAccount("Diamondback", 36003748, "thedbk");
@@ -88,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nvView);
         setupDrawerContent(navigationView);
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
@@ -150,6 +153,10 @@ public class MainActivity extends AppCompatActivity {
             mViewPager.setCurrentItem(1);
             return true;
         }
+        else if(id == R.id.accounts){
+            Toast.makeText(getApplicationContext(), "Button pressed",
+                    Toast.LENGTH_SHORT).show();
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -198,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
             Fabric.with(getContext(), new Twitter(authConfig), new TweetUi());
             int sectionNum = getArguments().getInt(ARG_SECTION_NUMBER) -1;
-            int idNum = (int)accountsToShow.get(sectionNum).getID();
+            int idNum = accountsToShow.get(sectionNum).getID();
 
             UserTimeline userTimeLine = new UserTimeline.Builder()
                     .screenName(accountsToShow.get(sectionNum).getIdName())
@@ -275,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return (CharSequence)(accountsToShow.get(position).getAccountName());
+            return (accountsToShow.get(position).getAccountName());
         }
     }
 }
