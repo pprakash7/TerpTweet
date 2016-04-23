@@ -1,5 +1,6 @@
 package com.example.cmsc436.exampletabs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -65,13 +66,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Twitter Accounts
+        Intent intent = getIntent();
         accountsToShow = new ArrayList<>();
         TwitterAccount presidentLoh = new TwitterAccount("President Loh", 299743215, "presidentLoh");
         TwitterAccount uOfMd = new TwitterAccount("UMD",36003748 , "UofMaryland");
         TwitterAccount diamondback = new TwitterAccount("Diamondback", 36003748, "thedbk");
-        accountsToShow.add(presidentLoh);
-        accountsToShow.add(uOfMd);
-        accountsToShow.add(diamondback);
+        if(intent.getStringExtra("loh").equals("true"))
+            accountsToShow.add(presidentLoh);
+        if(intent.getStringExtra("umd").equals("true"))
+            accountsToShow.add(uOfMd);
+        if(intent.getStringExtra("db").equals("true"))
+            accountsToShow.add(diamondback);
 
 
         super.onCreate(savedInstanceState);
