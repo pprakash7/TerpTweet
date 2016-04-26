@@ -179,6 +179,9 @@ public class MainActivity extends AppCompatActivity {
         else if(id == R.id.accounts){
             Toast.makeText(getApplicationContext(), "Button pressed",
                     Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.calendar) {
+            Intent intent = new Intent(getApplicationContext(), Calendar.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

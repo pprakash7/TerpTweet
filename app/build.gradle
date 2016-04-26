@@ -12,6 +12,7 @@ apply plugin: 'io.fabric'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
+    maven { url "https://jitpack.io" }
 }
 
 
@@ -42,4 +43,5 @@ dependencies {
     compile('com.twitter.sdk.android:twitter:1.13.0@aar') {
         transitive = true;
     }
+    compile 'com.crazyhitty.chdev.ks:rss-manager:0.22'
 }
