@@ -66,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Twitter Accounts
-        intent = getIntent();
-
+        Intent intent = getIntent();
         accountsToShow = new ArrayList<>();
         TwitterAccount presidentLoh = new TwitterAccount("President Loh", 299743215, "presidentLoh");
         TwitterAccount uOfMd = new TwitterAccount("UMD",36003748 , "UofMaryland");
