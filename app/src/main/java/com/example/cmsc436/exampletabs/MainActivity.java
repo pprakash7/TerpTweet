@@ -21,7 +21,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
@@ -60,13 +59,15 @@ public class MainActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
     private DrawerLayout mDrawer;
+    private Intent intent;
 
     public static ArrayList<TwitterAccount> accountsToShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Twitter Accounts
-        Intent intent = getIntent();
+        intent = getIntent();
+
         accountsToShow = new ArrayList<>();
         TwitterAccount presidentLoh = new TwitterAccount("President Loh", 299743215, "presidentLoh");
         TwitterAccount uOfMd = new TwitterAccount("UMD",36003748 , "UofMaryland");
@@ -102,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        //mDrawer.setDrawerListener(toggle);
         toggle.syncState();
     }
 
@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
                 index = accountsToShow.indexOf(t);
             }
         }
-
         if (index == -1){
             index = 0;
         }
@@ -177,8 +176,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         else if(id == R.id.accounts){
-            Toast.makeText(getApplicationContext(), "Button pressed",
-                    Toast.LENGTH_SHORT).show();
+            setResult(1, intent);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
