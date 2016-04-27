@@ -178,6 +178,11 @@ public class MainActivity extends AppCompatActivity {
             setResult(1, intent);
             finish();
         }
+        else if (id == R.id.calendar) {
+            Intent intent = new Intent(getApplicationContext(), Calendar.class);
+            startActivity(intent);
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
