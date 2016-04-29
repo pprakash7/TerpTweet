@@ -105,6 +105,52 @@ public class MainActivity extends AppCompatActivity {
             accountsToShow.add(uOfMd);
         if(intent.getStringExtra("db").equals("true"))
             accountsToShow.add(diamondback);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(dots);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(umdCS);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(umpd);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(terrapins);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(libraries);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(see);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(greenTidings);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(bsos);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(stamp);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(gradSchool);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(studentGov);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(healthCenter);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(resLife);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(ece);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(recWell);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(finAid);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(intramuruals);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(umdCompSci);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(umdSmith);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(hungryTerps);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(clarkSchool);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(umdSenate);
+        if(intent.getStringExtra("").equals("true"))
+            accountsToShow.add(terpWeather);
 
         // onCreate
         super.onCreate(savedInstanceState);
