@@ -8,9 +8,9 @@ package com.example.cmsc436.exampletabs;
 public class TwitterAccount {
 
     private String accountName, idName;
-    private int id;
+    private Long id;
 
-    public TwitterAccount(String accountName, int id, String idName) {
+    public TwitterAccount(String accountName, Long id, String idName) {
         this.accountName = accountName;
         this.id = id;
         this.idName = idName;
@@ -19,7 +19,7 @@ public class TwitterAccount {
         return accountName;
     }
 
-    public int getID() {
+    public Long getID() {
         return id;
     }
 
