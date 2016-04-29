@@ -65,12 +65,40 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Twitter Accounts
         intent = getIntent();
+
+        // ArrayList of the accounts to be shown
         accountsToShow = new ArrayList<>();
-        TwitterAccount presidentLoh = new TwitterAccount("President Loh", 299743215, "presidentLoh");
-        TwitterAccount uOfMd = new TwitterAccount("UMD",36003748 , "UofMaryland");
-        TwitterAccount diamondback = new TwitterAccount("Diamondback", 36003748, "thedbk");
+
+        // Twitter Accounts at UMD
+        TwitterAccount presidentLoh = new TwitterAccount("President Loh", 299743215L, "presidentLoh");
+        TwitterAccount uOfMd = new TwitterAccount("UMD",36003748L , "UofMaryland");
+        TwitterAccount diamondback = new TwitterAccount("Diamondback", 36003748L, "thedbk");
+        TwitterAccount dots = new TwitterAccount("DOTS", 95280326L, "DOTS_UMD");
+        TwitterAccount umdCS = new TwitterAccount("CS", 2375775877L, "umdcs");
+        TwitterAccount umpd = new TwitterAccount("UMPD", 24467012L, "UMPD");
+        TwitterAccount terrapins = new TwitterAccount("Terrapins", 54994166L, "umterps");
+        TwitterAccount libraries = new TwitterAccount("Libraries", 190617492L, "UMDLibraries");
+        TwitterAccount see = new TwitterAccount("SEE", 31916772L, "SEE_UMD");
+        TwitterAccount greenTidings = new TwitterAccount("Green Tidings", 1339312776L, "UMDGreenTidings");
+        TwitterAccount bsos = new TwitterAccount("BSOS",  45880617L, "bsosumd");
+        TwitterAccount stamp = new TwitterAccount("Stamp",59604041L, "thestampumd");
+        TwitterAccount gradSchool = new TwitterAccount("Grad School", 836145468L, "UMDGradSchool");
+        TwitterAccount studentGov = new TwitterAccount("Student Gov.", 322990625L, "UMDSGA");
+        TwitterAccount healthCenter = new TwitterAccount("Health Center", 440949316L, "UMDHealthCenter");
+        TwitterAccount resLife = new TwitterAccount("Res Life", 978882858L, "UMDReslife");
+        TwitterAccount ece = new TwitterAccount("ECE",  64892308L, "eceumd");
+        TwitterAccount recWell = new TwitterAccount("RecWell", 139808463L, "UMDRecWell");
+        TwitterAccount finAid = new TwitterAccount ("Fin Aid", 140133799L, "umdosfa");
+        TwitterAccount intramuruals = new TwitterAccount("Intramuruals", 366214573L, "UMDIntramuruals");
+        TwitterAccount umdCompSci = new TwitterAccount("Comp Sci",546915948L, "UMDCompSci" );
+        TwitterAccount umdSmith = new TwitterAccount("Smith", 2350626696L, "SmithUndergrad");
+        TwitterAccount hungryTerps = new TwitterAccount("Free Food", 377734560L, "Free_Food_UMD");
+        TwitterAccount clarkSchool = new TwitterAccount("Clark", 58569666L, "ClarkSchool");
+        TwitterAccount umdSenate = new TwitterAccount("Senate", 171922158L, "Senate");
+        TwitterAccount terpWeather = new TwitterAccount("Weather", 376005446L, "TerpWeather");
+
+        // Getting the accounts to be shown
         if(intent.getStringExtra("loh").equals("true"))
             accountsToShow.add(presidentLoh);
         if(intent.getStringExtra("umd").equals("true"))
@@ -78,16 +106,17 @@ public class MainActivity extends AppCompatActivity {
         if(intent.getStringExtra("db").equals("true"))
             accountsToShow.add(diamondback);
 
-
+        // onCreate
         super.onCreate(savedInstanceState);
+
+        // Twitter and Fabric configuration
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Twitter(authConfig));
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
@@ -148,9 +177,6 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager.setCurrentItem(index);
 
-        // Highlight the selected item has been done by NavigationView
-        //menuItem.setChecked(true);
-
         // Close the navigation drawer
         mDrawer.closeDrawers();
     }
@@ -182,7 +208,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), Calendar.class);
             startActivity(intent);
         }
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -220,8 +245,6 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
 
             // Setting listview to twitter
             final ListView listView = (ListView)(rootView.findViewById(R.id.listView));
@@ -229,9 +252,10 @@ public class MainActivity extends AppCompatActivity {
             swipeRefreshLayout.setOnRefreshListener(this);
             TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
 
+            // Building the timeline
             Fabric.with(getContext(), new Twitter(authConfig), new TweetUi());
             int sectionNum = getArguments().getInt(ARG_SECTION_NUMBER) -1;
-            int idNum = accountsToShow.get(sectionNum).getID();
+            Long idNum = accountsToShow.get(sectionNum).getID();
 
             UserTimeline userTimeLine = new UserTimeline.Builder()
                     .screenName(accountsToShow.get(sectionNum).getIdName())
@@ -243,6 +267,7 @@ public class MainActivity extends AppCompatActivity {
 
             listView.setAdapter(adapter);
             fragmentAdapter = adapter;
+
             listView.setOnScrollListener(new AbsListView.OnScrollListener() {
                 boolean enableRefresh = false;
 
@@ -266,6 +291,7 @@ public class MainActivity extends AppCompatActivity {
             return rootView;
         }
 
+        // Creating refresh option
         @Override
         public void onRefresh() {
             swipeRefreshLayout.setRefreshing(true);
