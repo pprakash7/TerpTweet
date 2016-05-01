@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffcc">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Select UMD News Sources"
+        android:textColor="#ff0000"
+        android:id="@+id/textView2"
+        android:textAlignment="center"
+        android:textSize="32sp"/>
+
+    <CheckBox
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:text="University of Maryland"
+        android:id="@+id/checkBox"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="President Loh"
+        android:id="@+id/checkBox3"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diamondback"
+        android:id="@+id/checkBox2"
+        android:checked="false" />
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DOTS"
+        android:id="@+id/checkBox4"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMPD"
+        android:id="@+id/checkBox7"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD Financial Aid"
+        android:id="@+id/checkBox20"
+        android:checked="false" />
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD Libraries"
+        android:id="@+id/checkBox9"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD Health Center"
+        android:id="@+id/checkBox16"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD Reslife"
+        android:id="@+id/checkBox17"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Terp Weather"
+        android:id="@+id/checkBox27"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD CS"
+        android:id="@+id/checkBox5"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD CompSci"
+        android:id="@+id/checkBox22"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD Smith Undergrad"
+        android:id="@+id/checkBox23"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD Clark School"
+        android:id="@+id/checkBox25"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BSOS"
+        android:id="@+id/checkBox12"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD Grad School"
+        android:id="@+id/checkBox14"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ECE at UMD"
+        android:id="@+id/checkBox18"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD Student Government"
+        android:id="@+id/checkBox15"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD Senate"
+        android:id="@+id/checkBox26"
+        android:checked="false" />
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Maryland Terrapins"
+        android:id="@+id/checkBox8"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD Intramurals"
+        android:id="@+id/checkBox21"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD RecWell"
+        android:id="@+id/checkBox19"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SEE"
+        android:id="@+id/checkBox10"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The Stamp"
+        android:id="@+id/checkBox13"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UMD Green Tidings"
+        android:id="@+id/checkBox11"
+        android:checked="false" />
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hungry UMD Terps"
+        android:id="@+id/checkBox24"
+        android:checked="false" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DONE"
+        android:id="@+id/button2"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
+</ScrollView>
