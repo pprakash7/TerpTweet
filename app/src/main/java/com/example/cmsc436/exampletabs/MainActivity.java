@@ -93,12 +93,12 @@ public class MainActivity extends AppCompatActivity {
         TwitterAccount ece = new TwitterAccount("ECE",  64892308L, "eceumd");
         TwitterAccount recWell = new TwitterAccount("RecWell", 139808463L, "UMDRecWell");
         TwitterAccount finAid = new TwitterAccount ("Fin Aid", 140133799L, "umdosfa");
-        TwitterAccount intramuruals = new TwitterAccount("Intramuruals", 366214573L, "UMDIntramuruals");
+        TwitterAccount intramuruals = new TwitterAccount("Intramurals", 366214573L, "UMDIntramurals");
         TwitterAccount umdCompSci = new TwitterAccount("Comp Sci",546915948L, "UMDCompSci" );
         TwitterAccount umdSmith = new TwitterAccount("Smith", 2350626696L, "SmithUndergrad");
         TwitterAccount hungryTerps = new TwitterAccount("Free Food", 377734560L, "Free_Food_UMD");
         TwitterAccount clarkSchool = new TwitterAccount("Clark", 58569666L, "ClarkSchool");
-        TwitterAccount umdSenate = new TwitterAccount("Senate", 171922158L, "Senate");
+        TwitterAccount umdSenate = new TwitterAccount("Senate", 171922158L, "UMDSenate");
         TwitterAccount terpWeather = new TwitterAccount("Weather", 376005446L, "TerpWeather");
 
         // Getting the accounts to be shown
