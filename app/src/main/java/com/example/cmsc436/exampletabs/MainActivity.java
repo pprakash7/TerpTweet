@@ -2,6 +2,7 @@ package com.example.cmsc436.exampletabs;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -277,6 +278,7 @@ public class MainActivity extends AppCompatActivity {
 
         private SwipeRefreshLayout swipeRefreshLayout;
         private TweetTimelineListAdapter fragmentAdapter;
+        private ListView listView;
 
         public PlaceholderFragment() {
         }
@@ -299,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
             // Setting listview to twitter
-            final ListView listView = (ListView)(rootView.findViewById(R.id.listView));
+            listView = (ListView)(rootView.findViewById(R.id.listView));
             swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
             swipeRefreshLayout.setOnRefreshListener(this);
             TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
@@ -309,38 +311,61 @@ public class MainActivity extends AppCompatActivity {
             int sectionNum = getArguments().getInt(ARG_SECTION_NUMBER) -1;
             Long idNum = accountsToShow.get(sectionNum).getID();
 
-            UserTimeline userTimeLine = new UserTimeline.Builder()
-                    .screenName(accountsToShow.get(sectionNum).getIdName())
-                    .build();
+           new DownloadTwitterTask().execute(sectionNum);
 
-            TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(getContext())
-                    .setTimeline(userTimeLine)
-                    .build();
-
-            listView.setAdapter(adapter);
-            fragmentAdapter = adapter;
-
-            listView.setOnScrollListener(new AbsListView.OnScrollListener() {
-                boolean enableRefresh = false;
-
-                @Override
-                public void onScrollStateChanged(AbsListView view, int scrollState) {
-                }
-
-                @Override
-                public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
-                                     int totalItemCount) {
-                    if (listView != null && listView.getChildCount() > 0) {
-                        // check that the first item is visible and that its top matches the parent
-                        enableRefresh = listView.getFirstVisiblePosition() == 0 &&
-                                listView.getChildAt(0).getTop() >= 0;
-                    } else {
-                        enableRefresh = false;
-                    }
-                    swipeRefreshLayout.setEnabled(enableRefresh);
-                }
-            });
             return rootView;
+        }
+
+        private class DownloadTwitterTask extends AsyncTask<Integer, Void, UserTimeline> {
+
+            //private UserTimeline userTimeLine;
+
+            @Override
+            protected UserTimeline doInBackground(Integer... sectionNum) {
+
+                UserTimeline userTimeLine = null;
+
+                if (sectionNum.length > 0) {
+                    userTimeLine = new UserTimeline.Builder()
+                            .screenName(accountsToShow.get(sectionNum[0]).getIdName())
+                            .build();
+                }
+
+                return userTimeLine;
+            }
+
+
+            @Override
+            protected void onPostExecute(UserTimeline userTimeline) {
+
+                TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(getContext())
+                        .setTimeline(userTimeline)
+                        .build();
+
+                listView.setAdapter(adapter);
+                fragmentAdapter = adapter;
+
+                listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+                    boolean enableRefresh = false;
+
+                    @Override
+                    public void onScrollStateChanged(AbsListView view, int scrollState) {
+                    }
+
+                    @Override
+                    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
+                                         int totalItemCount) {
+                        if (listView != null && listView.getChildCount() > 0) {
+                            // check that the first item is visible and that its top matches the parent
+                            enableRefresh = listView.getFirstVisiblePosition() == 0 &&
+                                    listView.getChildAt(0).getTop() >= 0;
+                        } else {
+                            enableRefresh = false;
+                        }
+                        swipeRefreshLayout.setEnabled(enableRefresh);
+                    }
+                });
+            }
         }
 
         // Creating refresh option
