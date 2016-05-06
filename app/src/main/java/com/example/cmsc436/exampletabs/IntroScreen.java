@@ -8,10 +8,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 public class IntroScreen extends Activity {
 
@@ -26,6 +28,10 @@ public class IntroScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         sharedPref = getPreferences(Context.MODE_PRIVATE);
+
+        TextView tx = (TextView)findViewById(R.id.textView2);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/UATerrafont.ttf");
+        tx.setTypeface(custom_font);
 
         Button doneButton = (Button) findViewById(R.id.button2);
         umd = (CheckBox) findViewById(R.id.checkBox);
