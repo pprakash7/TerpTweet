@@ -15,8 +15,10 @@ import java.util.List;
 public class Calendar extends AppCompatActivity implements OnRssLoadListener {
 
     private String URL = "http://umd.bwcs-hosting.com/feeder/main/eventsFeed.do?f=y&sort=dtstart.utc:asc&fexpr=" +
-            "(((vpath=%22/public/aliases/Audience/Students%22)))%20and%20(entity_type=%22event%22%7Centity_type=%22" +
-            "todo%22)&skinName=list-rss&count=10&days=1";
+            "(categories.href!=%22/public/.bedework/categories/sys/Ongoing%22%20and%20categories.href!=%22/public" +
+            "/.bedework/categories/Campus%20Bulletin%20Board%22)%20and%20(entity_type=%22event%22%7Centity_type=%22todo%22)" +
+            "&skinName=list-rss&count=10";
+
 
     private ListView feed;
     private ArrayList<CalendarEvent> events;
