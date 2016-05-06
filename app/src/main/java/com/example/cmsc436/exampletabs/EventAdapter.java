@@ -44,6 +44,7 @@ public class EventAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
         CalendarListViewHolder viewHolder;
+
         if (convertView == null) {
             LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = li.inflate(R.layout.calendarevent, null);
@@ -69,7 +70,8 @@ public class EventAdapter extends BaseAdapter {
         des = des + text2;
 
         viewHolder.description.setText(des);
-        viewHolder.link.setText("");
+        String link = mList.get(position).getLink();
+        viewHolder.link.setText(link);
         return v;
     }
 
@@ -82,6 +84,9 @@ public class EventAdapter extends BaseAdapter {
             title = (TextView) base.findViewById(R.id.eventTitle);
             description = (TextView) base.findViewById(R.id.eventDescription);
             link = (TextView) base.findViewById(R.id.link);
+            final String linkText = link.getText().toString();
+            link.setText("");
+
             //link.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
