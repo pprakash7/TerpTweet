@@ -3,4 +3,5 @@
     <color name="colorPrimary">#c00</color>
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#fb3</color>
+    <color name="marylandRed">#E03A3E</color>
 </resources>

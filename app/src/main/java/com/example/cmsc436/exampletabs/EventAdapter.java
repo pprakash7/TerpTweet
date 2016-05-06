@@ -54,8 +54,22 @@ public class EventAdapter extends BaseAdapter {
         }
 
         viewHolder.title.setText(mList.get(position).getTitle());
-        viewHolder.description.setText(mList.get(position).getDescription().replaceAll("<br/>", "\n"));
-        viewHolder.link.setText(mList.get(position).getLink());
+
+        String text = mList.get(position).getDescription();
+
+        String date = text.substring(0, text.indexOf("<br/>"));
+
+
+        String des = "";
+        des = des + date + "\n";
+
+        String text2 = mList.get(position).getDescription().substring(date.length());
+        text2 = text2.replaceAll("<br/>", "\n");
+
+        des = des + text2;
+
+        viewHolder.description.setText(des);
+        viewHolder.link.setText("");
         return v;
     }
 
@@ -68,6 +82,7 @@ public class EventAdapter extends BaseAdapter {
             title = (TextView) base.findViewById(R.id.eventTitle);
             description = (TextView) base.findViewById(R.id.eventDescription);
             link = (TextView) base.findViewById(R.id.link);
+            //link.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
 }
