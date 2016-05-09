@@ -37,6 +37,7 @@ import com.twitter.sdk.android.tweetui.TweetUi;
 import com.twitter.sdk.android.tweetui.UserTimeline;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -199,6 +200,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupDrawerContent(NavigationView navigationView) {
         Menu navMenu = navigationView.getMenu();
+
+        Collections.sort(accountsToShow);
+
         for (TwitterAccount t: accountsToShow){
             navMenu.add(t.getAccountName());
         }
@@ -219,6 +223,9 @@ public class MainActivity extends AppCompatActivity {
         int index = -1;
 
         String title = menuItem.getTitle().toString();
+
+
+
         for (TwitterAccount t: accountsToShow) {
             if (t.getAccountName().equalsIgnoreCase(title)) {
                 index = accountsToShow.indexOf(t);
