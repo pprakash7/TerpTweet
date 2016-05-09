@@ -5,7 +5,7 @@ package com.example.cmsc436.exampletabs;
  */
 
 
-public class TwitterAccount {
+public class TwitterAccount implements Comparable{
 
     private String accountName, idName;
     private Long id;
@@ -27,4 +27,8 @@ public class TwitterAccount {
         return idName;
     }
 
+    public int compareTo(Object o) {
+        TwitterAccount toCompare = (TwitterAccount) o;
+        return this.accountName.compareTo(toCompare.getAccountName());
+    }
 }
